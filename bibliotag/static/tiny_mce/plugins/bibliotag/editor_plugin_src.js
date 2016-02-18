@@ -31,7 +31,8 @@
 			// Register buttons
 			ed.addButton('bibliotag', {
 				title : 'bibliotag.desc',
-				cmd : 'mceBiblioTag'
+				cmd : 'mceBiblioTag',
+				image: '../img/quotes.png'
 			});
 		},
 
