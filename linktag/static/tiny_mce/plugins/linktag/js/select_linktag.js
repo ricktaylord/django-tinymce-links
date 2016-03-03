@@ -4,4 +4,4 @@
 // except 'app' ones, 
 
 // Load the main app module to start the app
-requirejs(["select_bibliotag/main"]);
+requirejs(["select_linktag/main"]);

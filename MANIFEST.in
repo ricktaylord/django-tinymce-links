@@ -1,1 +1,1 @@
-recursive-include biblio_tag *.py *.html *.js *.css
+recursive-include link_tag *.py *.html *.js *.css

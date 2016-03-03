@@ -9,18 +9,18 @@
  */
 
 (function() {
-	tinymce.create('tinymce.plugins.BiblioTagPlugin', {
+	tinymce.create('tinymce.plugins.LinkTagPlugin', {
 		init : function(ed, url) {
 			// Register commands
-			ed.addCommand('mceBiblioTag', function() {
+			ed.addCommand('mceLinkTag', function() {
 				// Internal image object like a flash placeholder
 				if (ed.dom.getAttrib(ed.selection.getNode(), 'class', '').indexOf('mceItem') != -1)
 					return;
 
 				ed.windowManager.open({
-					file : url + '/bibliotag.htm',
-					width : 480 + parseInt(ed.getLang('bibliotag.delta_width', 0)),
-					height : 385 + parseInt(ed.getLang('bibliotag.delta_height', 0)),
+					file : url + '/linktag.htm',
+					width : 480 + parseInt(ed.getLang('linktag.delta_width', 0)),
+					height : 385 + parseInt(ed.getLang('linktag.delta_height', 0)),
 					inline : 1,
 					
 				}, {
@@ -29,16 +29,16 @@
 			});
 
 			// Register buttons
-			ed.addButton('bibliotag', {
-				title : 'bibliotag.desc',
-				cmd : 'mceBiblioTag',
+			ed.addButton('linktag', {
+				title : 'linktag.desc',
+				cmd : 'mceLinkTag',
 				image: url + '/img/quotes.png'
 			});
 		},
 
 		getInfo : function() {
 			return {
-				longname : 'Biblio Tags for Drupal',
+				longname : 'Link Tags',
 				author : 'Rick Taylor',
 				authorurl : 'http://ricktaylordesign.co.uk',
 				version : tinymce.majorVersion + "." + tinymce.minorVersion
@@ -47,5 +47,5 @@
 	});
 
 	// Register plugin
-	tinymce.PluginManager.add('bibliotag', tinymce.plugins.BiblioTagPlugin);
+	tinymce.PluginManager.add('linktag', tinymce.plugins.LinkTagPlugin);
 })();
