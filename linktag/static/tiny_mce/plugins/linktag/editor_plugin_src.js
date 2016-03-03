@@ -32,7 +32,7 @@
 			ed.addButton('linktag', {
 				title : 'linktag.desc',
 				cmd : 'mceLinkTag',
-				image: '../img/quotes.png'
+				image: '../img/quote.png'
 			});
 		},
 

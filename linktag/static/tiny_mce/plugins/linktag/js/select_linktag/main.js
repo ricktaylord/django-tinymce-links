@@ -55,21 +55,39 @@ define(["jquery", "jquery-ui/autocomplete"], function($) {
 
             $.each(levels, function(i, s) {
                 e = get_widget(s);
+                console.debug(s);
+                console.debug(e);
                 var v = e.val();
-                if( v !="-" || vals.length ) {
+                if( v != "-" || vals.length ) {
+                    console.debug(v);
                     vals.push(v);
                     if( v != "-" ) {
                         populate_widget(s, current_data);
-                        e.val(v);
                         show_widget(s);
-                        current_data = current_data[v].children;
+                        var new_data = [];
+                        e.val("-");
+                        $.each(current_data, function(i, el) {
+                            if(el.pk == v) {
+                                new_data = el.children;
+                                e.val(v);
+                            }
+                        });
+                        current_data = new_data;
                     } else {
+                        console.debug("Populating");
+                        console.debug(current_data);
                         populate_widget(s, current_data);
-                        current_data = {};
+                        set_widget(s, "-");
+                        if( current_data.length>0 ) {
+                            show_widget(s);
+                        }
+                        current_data = [];
                     }
                 }
             });
-            $("#link_ref").val(vals.join("_"));
+            console.debug("Finished vals");
+            console.debug(vals);
+            $("#link_ref").val(vals.join(":"));
         }
 
         var learning_structure = {};

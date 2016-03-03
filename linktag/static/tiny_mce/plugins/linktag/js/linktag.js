@@ -20,21 +20,26 @@ var LinkTagDialog = {
 
 	insert : function(file, title) {
 		var ed = tinyMCEPopup.editor, t = this, f = document.forms[0];
-		if (f.linkref.value === '') {
+
+		if (f.ref.value == '') {
 			tinyMCEPopup.close();
 			return;
 		}
+		alert("HI");
 		t.insertAndClose();
 	},
 
 	insertAndClose : function() {
+		alert("BOO");
 		var ed = tinyMCEPopup.editor, f = document.forms[0], nl = f.elements, v, args = {}, el, tagname;
 		tinyMCEPopup.restoreSelection();
 		// Fixes crash in Safari
 		if (tinymce.isWebKit)
 			ed.getWin().focus();
-		c = ed.selection.getContent();
-		if (f.inline.value=="1") {
+		var c = ed.selection.getContent();
+		var linkref = f.ref.value;
+
+		if (c) {
 			ins = "[inlink:"+linkref+"]"+c+"[/inlink]";
 			ed.selection.setContent(ins);
 			ed.undoManager.add();
