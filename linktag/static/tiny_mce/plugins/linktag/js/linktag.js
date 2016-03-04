@@ -25,12 +25,12 @@ var LinkTagDialog = {
 			tinyMCEPopup.close();
 			return;
 		}
-		alert("HI");
+		
 		t.insertAndClose();
 	},
 
 	insertAndClose : function() {
-		alert("BOO");
+		
 		var ed = tinyMCEPopup.editor, f = document.forms[0], nl = f.elements, v, args = {}, el, tagname;
 		tinyMCEPopup.restoreSelection();
 		// Fixes crash in Safari
