@@ -18,10 +18,19 @@
 		<div class="panel_wrapper">
 			<label for="link_select">Choose learning object:
 			<input type="hidden" name="ref" id="link_ref" />
-			<select class="learning_object" name="topic" id="link_topic_select"></select><br />
-			<select class="learning_object" name="topic" id="link_module_select"></select><br />
-			<select class="learning_object" name="topic" id="link_lesson_select"></select><br />
-			<select class="learning_object" name="topic" id="link_question_select"></select><br />
+			<fieldset>
+				<legend>a) choose a file to link to:</legend>
+				<select id="link_file_ref" name="file_ref"></select>
+				<input type="hidden" name="parent_id" id="link_file_parent_id" />
+				<input type="hidden" name="parent_type" id="link_file_parent_type" />
+			</fieldset>
+			<fieldset>
+				<legend>or b) choose a page to link to:</legend>
+				<select class="learning_object" name="topic" id="link_topic_select"></select><br />
+				<select class="learning_object" name="module" id="link_module_select"></select><br />
+				<select class="learning_object" name="link" id="link_lesson_select"></select><br />
+				<select class="learning_object" name="question" id="link_question_select"></select>
+			</fieldset>
 		</div>
 		<div class="mceActionPanel">
 			<input type="submit" id="insert" name="insert" value="{#insert}" />

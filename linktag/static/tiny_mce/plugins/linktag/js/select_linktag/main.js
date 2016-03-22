@@ -1,10 +1,6 @@
 define(["jquery", "jquery-ui/autocomplete"], function($) {
     $(function() {
         
-        function reset_widgets() {
-            $()
-        }
-
         function get_widget(type) {
             return $("#link_"+type+"_select");
         }
@@ -17,7 +13,7 @@ define(["jquery", "jquery-ui/autocomplete"], function($) {
         function populate_widget(type, data) {
             var $select = get_widget(type);
             $select.find("option").remove();
-            $select.append('<option value="-">--- None selected ---</option>')
+            $select.append('<option value="-">--- None selected ---</option>');
             $.each(data, function(key, val) {
                 $select.append('<option value=' + val.pk + '>' + val.name + '</option>');
             });
@@ -89,6 +85,16 @@ define(["jquery", "jquery-ui/autocomplete"], function($) {
             learning_structure = data;
             populate_widget("topic", learning_structure);
             reset_widgets();
+        });
+
+        var parent_id = $( "input#link_file_parent_id" ).val();
+        var parent_type = $( "input#link_file_parent_type" ).val();
+        var $select = $("select#link_file_ref");
+        $.getJSON( "/file_link/get/"+parent_type+"/"+parent_id+"/", function( data, status, xhr ) {
+            $.each(data, function(key, value) {
+                $select.append('<option value="-">--- None selected ---</option>');
+                $select.append('<option value="' + key + '">' + value + '</option>');
+            });
         });
                
         $( "select.learning_object" ).change(update_widgets);

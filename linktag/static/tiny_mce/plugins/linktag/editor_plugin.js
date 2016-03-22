@@ -12,6 +12,7 @@
 	tinymce.create('tinymce.plugins.LinkTagPlugin', {
 		init : function(ed, url) {
 			// Register commands
+			var pathArray = window.location.pathname.split( '/' );
 			ed.addCommand('mceLinkTag', function() {
 				// Internal image object like a flash placeholder
 				if (ed.dom.getAttrib(ed.selection.getNode(), 'class', '').indexOf('mceItem') != -1)
@@ -22,9 +23,10 @@
 					width : 480 + parseInt(ed.getLang('linktag.delta_width', 0)),
 					height : 385 + parseInt(ed.getLang('linktag.delta_height', 0)),
 					inline : 1,
-					
 				}, {
-					plugin_url : url
+					plugin_url : url,
+					type: pathArray[pathArray.length - 3],
+					id: pathArray[pathArray.length - 2]
 				});
 			});
 
